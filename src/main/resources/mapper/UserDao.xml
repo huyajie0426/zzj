@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zzsj.dao.UserDao">
+
+    <select id="LoginUser" parameterType="com.zzsj.entity.User" resultType="com.zzsj.entity.User">
+        select user_id,user_mini,user_realName,sex,jf,u_level,state,phone,email,address,url,reg_time,xp
+        from tb_user where user_mini=#{user.u_mini} and user_pwd=#{user.u_pwd}
+    </select>
+
+    <insert id="RegistUser" parameterType="com.zzsj.entity.User">
+        insert into tb_user(user_id,user_mini,user_realName,user_pwd,sex,jf,u_level,state,phone,email,address,
+        url,reg_time,xp) values (
+                #{user.u_id},
+                #{user.u_mini},
+                #{user.u_realName},
+                #{user.u_pwd},
+                #{user.sex},
+                #{user.jf},
+                #{user.u_level},
+                #{user.state},
+                #{user.phone},
+                #{user.email},
+                #{user.address},
+                #{user.headUrl},
+                #{user.reg_time},
+                #{user.xp}
+        )
+    </insert>
+</mapper>
